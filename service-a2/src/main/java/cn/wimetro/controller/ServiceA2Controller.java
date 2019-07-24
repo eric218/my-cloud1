@@ -14,6 +14,13 @@ public class ServiceA2Controller {
     @RequestMapping(value = "/test", method = RequestMethod.GET)
     @ResponseBody
     public String test() {
+        System.out.println("hello:testA2");
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
         return "hello:testA2";
     }
 }

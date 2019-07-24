@@ -14,6 +14,7 @@ public class ServiceA1Controller {
     @RequestMapping(value = "/test", method = RequestMethod.GET)
     @ResponseBody
     public String test() {
+        System.out.println("hello:testA1");
         return "hello:testA1";
     }
 }

@@ -18,7 +18,30 @@ eureka:
 
 #http://localhost/zuulA/serviceA/test
 zuul:
+  #开启重试机制
+  retryable: true
   routes:
     service-A-service:
       path: /zuulA/**
       serviceId: service-A-server
+ribbon:
+  ReadTimeout: 1000  # 单位毫秒数
+  SocketTimeout: 1000
+  ##对当前服务的重试次数
+  MaxAutoRetries: 3
+  #切换相同Server的次数
+  MaxAutoRetriesNextServer: 0
+#  ratelimit:
+#    enabled: true
+#    default-policy:
+#      limit: 1
+#      #quota: 1
+#      refresh-interval: 3
+#    policies:
+#      service-A-service:
+#        #每个刷新时间窗口对应的请求数量限制
+#        limit: 5
+#        #每个刷新时间窗口对应的请求时间限制（秒）
+#        #quota: 50
+#        #刷新时间窗口的时间，默认值 (秒)
+#        refresh-interval: 20
